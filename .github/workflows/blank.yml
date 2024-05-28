@@ -10,15 +10,13 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
-    
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:    
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
     # Runs ssh deploy for CI, CD
     - name: executing remote ssh commands using password
-      if: github.event_name == 'pull_request'
       uses: appleboy/ssh-action@master
       with:
         host: 0.tcp.jp.ngrok.io
